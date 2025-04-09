@@ -2,8 +2,6 @@
 
 A modern, web-based Video Poker game built with React and Vite that features multiple poker variants, realistic animations, and casino-style gameplay.
 
-![Video Poker Game Screenshot](screenshot.png)
-
 ## Features
 
 ### Multiple Game Variants
@@ -71,7 +69,7 @@ A modern, web-based Video Poker game built with React and Vite that features mul
 1. Clone the repository
 
    ```
-   git clone https://github.com/yourusername/video-poker.git
+   git clone https://github.com/mock5/video-poker-js.git
    cd video-poker
    ```
 
