@@ -1,0 +1,76 @@
+.controls {
+  margin-top: 20px;
+}
+
+.status-display {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.win-display {
+  color: #ffcc00;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.bet-display {
+  color: white;
+}
+
+.credits-display {
+  color: #ffcc00;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.control-button {
+  padding: 10px 15px;
+  margin: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #666;
+  color: white;
+  min-width: 100px;
+}
+
+.control-button:hover {
+  background-color: #888;
+}
+
+.control-button:disabled {
+  background-color: #444;
+  cursor: not-allowed;
+}
+
+.bet-button {
+  background-color: #006699;
+}
+
+.bet-button:hover {
+  background-color: #0088cc;
+}
+
+.deal-button {
+  background-color: #ffcc00;
+  color: #000;
+  min-width: 120px;
+}
+
+.deal-button:hover {
+  background-color: #ffdd33;
+}

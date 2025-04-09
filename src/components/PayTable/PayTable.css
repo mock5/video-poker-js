@@ -1,0 +1,36 @@
+.pay-table {
+  background-color: #000080;
+  color: #ffcc00;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  width: 70%;
+}
+
+.pay-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pay-table td {
+  padding: 5px 10px;
+  text-align: center;
+  border-bottom: 1px dotted #ffcc00;
+}
+
+.pay-table .hand-name {
+  text-align: left;
+  font-weight: bold;
+  width: 200px;
+}
+
+.pay-table .current-bet {
+  background-color: #d40000;
+  color: white;
+  font-weight: bold;
+}
+
+.pay-table tr.highlighted {
+  background-color: #003366;
+}
