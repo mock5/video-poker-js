@@ -3,3 +3,37 @@
   justify-content: center;
   margin: 20px 0;
 }
+
+.card-container {
+  opacity: 0;
+  transform: translateY(20px);
+  animation-name: dealCard;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+/* Normal speed animations */
+.speed-1 .card-container {
+  animation-duration: 0.5s;
+}
+
+/* Fast speed animations */
+.speed-2 .card-container {
+  animation-duration: 0.25s;
+}
+
+/* Turbo speed animations */
+.speed-3 .card-container {
+  animation-duration: 0.1s;
+}
+
+@keyframes dealCard {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

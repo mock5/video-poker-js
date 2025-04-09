@@ -65,6 +65,15 @@
   background-color: #0088cc;
 }
 
+.speed-button {
+  width: 140px;
+  background-color: #663399;
+}
+
+.speed-button:hover {
+  background-color: #8844cc;
+}
+
 .deal-button {
   background-color: #ffcc00;
   color: #000;

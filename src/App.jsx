@@ -17,6 +17,8 @@ function App() {
   const [credits, setCredits] = useState(1000);
   const [handResult, setHandResult] = useState({ type: 'NO_WIN', multiplier: 0 });
   const [winAmount, setWinAmount] = useState(0);
+  const [gameSpeed, setGameSpeed] = useState(1); // 1: normal, 2: fast, 3: turbo
+  const [isFlipping, setIsFlipping] = useState(false); // Track when cards are flipping
 
   // Initialize the game
   useEffect(() => {
@@ -69,32 +71,59 @@ function App() {
       // Remove drawn cards from deck
       newDeck.splice(0, replacedCount);
 
+      // Set flipping animation state
+      setIsFlipping(true);
+
+      // Update the deck and hand
       setDeck(newDeck);
       setHand(newHand);
 
-      // Evaluate the hand
-      const result = evaluateHand(newHand);
-      setHandResult(result);
+      // After the flip animation completes, evaluate the hand
+      const flipDuration = 1000 / gameSpeed; // Base duration for the flip animation
+      const evaluationDelay = flipDuration + (300 * 5 / gameSpeed); // Total time for all cards to flip
 
-      // Calculate winnings
-      const win = payTable[result.type][currentBet - 1];
-      setWinAmount(win);
-      setCredits(credits + win);
+      setTimeout(() => {
+        // Evaluate the hand
+        const result = evaluateHand(newHand);
+        setHandResult(result);
 
-      setGamePhase('gameOver');
+        // Calculate winnings
+        const win = payTable[result.type][currentBet - 1];
+        setWinAmount(win);
+        setCredits(credits + win);
+
+        setGamePhase('gameOver');
+        setIsFlipping(false);
+      }, evaluationDelay);
     }
   };
 
   // Handle bet one button
   const handleBetOne = () => {
-    if (gamePhase !== 'betting') return;
+    if (gamePhase !== 'betting' && gamePhase !== 'gameOver') return;
     setCurrentBet(currentBet < 5 ? currentBet + 1 : 1);
+
+    // If we're in gameOver phase, switch back to betting phase
+    if (gamePhase === 'gameOver') {
+      setGamePhase('betting');
+    }
   };
 
   // Handle bet max button
   const handleBetMax = () => {
-    if (gamePhase !== 'betting') return;
+    if (gamePhase !== 'betting' && gamePhase !== 'gameOver') return;
     setCurrentBet(5);
+
+    // If we're in gameOver phase, switch back to betting phase
+    if (gamePhase === 'gameOver') {
+      setGamePhase('betting');
+    }
+  };
+
+  // Handle speed button
+  const handleSpeedToggle = () => {
+    // Cycle through speeds: 1 (normal) -> 2 (fast) -> 3 (turbo) -> 1 (normal)
+    setGameSpeed(prevSpeed => prevSpeed < 3 ? prevSpeed + 1 : 1);
   };
 
   return (
@@ -110,6 +139,8 @@ function App() {
         cards={hand}
         heldCards={heldCards}
         onCardClick={handleCardClick}
+        gameSpeed={gameSpeed}
+        isFlipping={isFlipping}
       />
 
       <Controls
@@ -117,9 +148,11 @@ function App() {
         onDeal={handleDeal}
         onBetOne={handleBetOne}
         onBetMax={handleBetMax}
+        onSpeedToggle={handleSpeedToggle}
         currentBet={currentBet}
         credits={credits}
         winAmount={winAmount}
+        gameSpeed={gameSpeed}
       />
     </div>
   );
