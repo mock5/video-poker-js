@@ -27,6 +27,15 @@
 
 .credits-display {
   color: #ffcc00;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.credits-display:hover {
+  background-color: rgba(255, 204, 0, 0.2);
+  transform: scale(1.05);
 }
 
 .buttons {

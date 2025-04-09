@@ -6,9 +6,18 @@
 }
 
 body {
-  background-color: #121212;
+  background-color: #000080; /* Dark blue background like casino machines */
   color: white;
   font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.video-poker-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .video-poker {
@@ -19,10 +28,23 @@ body {
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  max-width: 1000px;
+  width: 100%;
 }
 
 .video-poker h1 {
   color: #ffcc00;
   margin-bottom: 20px;
   text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+/* Styling for the more games button */
+.more-games-button {
+  background-color: #ff9900 !important;
+  color: #000 !important;
+  font-weight: bold;
+}
+
+.more-games-button:hover {
+  background-color: #ffaa33 !important;
 }
